@@ -27,55 +27,6 @@ CREATE TABLE messages (
   FOREIGN KEY(roomname_id) REFERENCES roomnames(roomname_id)
 );
 
--- CREATE TABLE roomnames (
---   id INT AUTO_INCREMENT,
---   roomname VARCHAR (10) NOT NULL,
---   users_id INT NOT NULL,
---   msg_id INT NOT NULL,
---   PRIMARY KEY(id),
---   FOREIGN KEY(users_id) REFERENCES users(id),
---   FOREIGN KEY(msg_id) REFERENCES messages(id)
--- );
-
--- CREATE TABLE users (
---   id INT AUTO_INCREMENT,
---   username VARCHAR (15) NOT NULL,
---   msg_id INT NOT NULL,
---   roomname_id INT NOT NULL,
---   friends_id INT NOT NULL,
---   PRIMARY KEY(id),
---   FOREIGN KEY(roomname_id) REFERENCES roomnames(id),
---   FOREIGN KEY(friends_id) REFERENCES friends(id),
---   FOREIGN KEY(msg_id) REFERENCES messages(id)
--- );
-
--- CREATE TABLE messages (
---   id INT AUTO_INCREMENT,
---   msg VARCHAR (20) NOT NULL,
---   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---   users_id INT NOT NULL,
---   roomname_id INT NOT NULL,
---   PRIMARY KEY (id),
---   FOREIGN KEY(users_id) REFERENCES users(id),
---   FOREIGN KEY(roomname_id) REFERENCES roomnames(id)
--- );
-
-
-
--- CREATE TABLE friends (
---   id INT AUTO_INCREMENT,
---   friend VARCHAR(10) NOT NULL,
---   users_id INT NOT NULL,
---   PRIMARY KEY(id),
---   FOREIGN KEY(users_id) REFERENCES users(id)
--- );
-
-
-/* Create other tables and define schemas for them here! */
-
-
-
-
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/

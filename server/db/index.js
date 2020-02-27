@@ -13,9 +13,9 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('INSERT INTO users (username, msg_id, roomname_id) VALUES ("TESTER", 1, 1)', function (error, results, fields) {
+/* connection.query('INSERT INTO users (username, msg_id, roomname_id) VALUES ("TESTER", 1, 1)', function (error, results, fields) {
   if (error) {
     throw error;
   }
   console.log(results);
-});
+}); */
