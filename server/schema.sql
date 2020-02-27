@@ -1,27 +1,74 @@
+DROP DATABASE IF EXISTS chat;
+
 CREATE DATABASE chat;
 
 USE chat;
 
-CREATE TABLE messages (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  msg VARCHAR (20) NOT NULL,
-  users_id INT NOT NULL REFERENCES users(id),
-  roomname_id INT NOT NULL REFERENCES roomnames(id)
-);
 
 CREATE TABLE users (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  username VARCHAR (10) NOT NULL,
-  msg_id INT NOT NULL REFERENCES messages(id),
-  roomname_id INT NOT NULL REFERENCES roomnames(id)
+  username_id INT AUTO_INCREMENT,
+  username VARCHAR(15) NOT NULL,
+  PRIMARY KEY(username_id)
 );
 
 CREATE TABLE roomnames (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  roomname VARCHAR (10) NOT NULL,
-  users_id INT NOT NULL REFERENCES users(id),
-  msg_id INT NOT NULL REFERENCES messages(id)
+  roomname_id INT AUTO_INCREMENT,
+  roomname VARCHAR(10),
+  PRIMARY KEY(roomname_id)
 );
+
+CREATE TABLE messages (
+  msg_id INT AUTO_INCREMENT,
+  msg_text VARCHAR(30) NOT NULL,
+  username_id INT NOT NULL,
+  roomname_id INT NOT NULL,
+  PRIMARY KEY(msg_id),
+  FOREIGN KEY(username_id) REFERENCES users(username_id),
+  FOREIGN KEY(roomname_id) REFERENCES roomnames(roomname_id)
+);
+
+-- CREATE TABLE roomnames (
+--   id INT AUTO_INCREMENT,
+--   roomname VARCHAR (10) NOT NULL,
+--   users_id INT NOT NULL,
+--   msg_id INT NOT NULL,
+--   PRIMARY KEY(id),
+--   FOREIGN KEY(users_id) REFERENCES users(id),
+--   FOREIGN KEY(msg_id) REFERENCES messages(id)
+-- );
+
+-- CREATE TABLE users (
+--   id INT AUTO_INCREMENT,
+--   username VARCHAR (15) NOT NULL,
+--   msg_id INT NOT NULL,
+--   roomname_id INT NOT NULL,
+--   friends_id INT NOT NULL,
+--   PRIMARY KEY(id),
+--   FOREIGN KEY(roomname_id) REFERENCES roomnames(id),
+--   FOREIGN KEY(friends_id) REFERENCES friends(id),
+--   FOREIGN KEY(msg_id) REFERENCES messages(id)
+-- );
+
+-- CREATE TABLE messages (
+--   id INT AUTO_INCREMENT,
+--   msg VARCHAR (20) NOT NULL,
+--   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--   users_id INT NOT NULL,
+--   roomname_id INT NOT NULL,
+--   PRIMARY KEY (id),
+--   FOREIGN KEY(users_id) REFERENCES users(id),
+--   FOREIGN KEY(roomname_id) REFERENCES roomnames(id)
+-- );
+
+
+
+-- CREATE TABLE friends (
+--   id INT AUTO_INCREMENT,
+--   friend VARCHAR(10) NOT NULL,
+--   users_id INT NOT NULL,
+--   PRIMARY KEY(id),
+--   FOREIGN KEY(users_id) REFERENCES users(id)
+-- );
 
 
 /* Create other tables and define schemas for them here! */
