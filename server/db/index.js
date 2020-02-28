@@ -11,8 +11,11 @@ var connection = mysql.createConnection({
   database: 'chat'
 });
 
-connection.connect();
+connection.connect((err) => {
+  return err ? console.log('no connection', err) : console.log('there is a connection');
+});
 
+module.exports = connection;
 /* connection.query('INSERT INTO users (username, msg_id, roomname_id) VALUES ("TESTER", 1, 1)', function (error, results, fields) {
   if (error) {
     throw error;

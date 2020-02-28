@@ -20,8 +20,8 @@ CREATE TABLE roomnames (
 CREATE TABLE messages (
   msg_id INT AUTO_INCREMENT,
   msg_text VARCHAR(30) NOT NULL,
-  username_id INT NOT NULL,
-  roomname_id INT NOT NULL,
+  username_id INT DEFAULT NULL,
+  roomname_id INT DEFAULT NULL,
   PRIMARY KEY(msg_id),
   FOREIGN KEY(username_id) REFERENCES users(username_id),
   FOREIGN KEY(roomname_id) REFERENCES roomnames(roomname_id)
